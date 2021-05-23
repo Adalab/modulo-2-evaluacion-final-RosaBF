@@ -3,18 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Adalab Web Starter Kit</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+
+    <!-- Hind Siliguri -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>TV Shows Finder</title>
+
     <link rel="stylesheet" href="./assets/css/main.css" />
-    <link rel="icon" href="./assets/images/favicon.png" />
+    <link rel="icon" href="./assets/images/clapper-icon.png" />
   </head>
 
   <body>
-    <div class="page">
-      <include src="./partials/header.html" title="Bienvenidos a Adalab"></include>
-      <include src="./partials/main.html"></include>
-      <include src="./partials/footer.html"></include>
-    </div>
+    <main>
+      <section>
+        <h1 class="title1">TV Shows finder</h1>
+        <form action="#" class="js-form">
+          <input type="text" name="" id="" class="input js-input" />
+          <button class="js-btn">Search</button>
+        </form>
+      </section>
+      <section class="favorites js-fcontainerFavorites">
+        <h2 class="title2">Favorites</h2>
+      </section>
+      <ul class="movies__list js-movies-list"></ul>
+    </main>
+
     <script src="./assets/js/main.js"></script>
   </body>
 </html>
