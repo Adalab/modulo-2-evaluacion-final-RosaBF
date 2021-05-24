@@ -22,6 +22,11 @@
   padding-bottom: 40px;
   box-shadow: 0 0 40px #4f9;
   align-items: flex-start;
+  &:hover {
+    transform: scale(1.2);
+    color: darkgreen;
+    box-shadow: 0 0 40px #4f9;
+  }
 }
 
 .button {
