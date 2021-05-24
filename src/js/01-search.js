@@ -11,32 +11,49 @@ let ulList = document.querySelector('.js-movies-list');
 
 button.addEventListener('click', findTvShow);
 
+// buscar la info.
 function findTvShow() {
   const inputValue = document.querySelector('.js-input').value;
   dataSeries = [];
-  fetch(`http://api.tvmaze.com/search/shows?q=${inputValue}`)
+  fetch(`//api.tvmaze.com/search/shows?q=${inputValue}`)
     .then((response) => response.json())
     .then((data) => {
       for (const series of data) {
         dataSeries.push(series.show);
       }
 
-      paintTvShow(dataSeries);
-      allListenersToSeries();
+      paintTvShow();
     });
 }
-
-function paintTvShow(ev) {
+// Pintar la información.
+function paintTvShow() {
   let fullShowList = '';
-  ev.forEach((element) => {
+  dataSeries.forEach((serie) => {
     let image = '';
-    if (element.image === null) {
+    if (serie.image === null) {
       image = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
     } else {
-      image = element.image.medium;
+      image = serie.image.medium;
     }
-    fullShowList += `<li class= js-poster favorite> <img src= ${image}></img>${element.name}</li>`;
+
+    //buscar si la serie clickada está en favoritos:
+    const isPresent = favoriteSeries.find((favoriteId) => {
+      return favoriteId.id === serie.id;
+    });
+
+    console.log(serie.name, isPresent);
+
+    // Si al iniciar la página el elemento "presente" está indefinido, nos muestra la lista completa. Si no, nos muestra la de favoritos.
+    if (isPresent === undefined) {
+      fullShowList += `<li data-id="${serie.id}" class= "js-poster"> <img src= "${image}">`;
+      fullShowList += `<img${serie.name}>`;
+    } else {
+      fullShowList += `<li data-id="${serie.id}" class= "js-poster favorite"> <img src= "${image}">`;
+      fullShowList += `<img${serie.name}>`;
+      fullShowList += '</li>';
+    }
   });
 
   ulList.innerHTML = fullShowList;
+  allListenersToSeries();
 }
