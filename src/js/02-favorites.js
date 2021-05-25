@@ -11,7 +11,7 @@ function handleClickSeries(event) {
   //----->solución posible
   //Creo = clikcedSerieId es el Id de la serie sobre el que he hecho click. Está nombrado en la función paintTvShow como serie.id.
 
-  const clikcedSerieId = parseInt(event.currentTarget.dataset.id);
+  const clickedSerieId = parseInt(event.currentTarget.dataset.id);
   //convertimos de cadena a número para que luego no nos de problemas.
 
   console.log('Favoritos antes', favoriteSeries);
@@ -19,19 +19,19 @@ function handleClickSeries(event) {
   //buscar si la serie clickada está en favoritos.
   // find nos devuelve el primer elemento que cumple esta condición y si no lo encuentra nos devuelve Undefined:
   const isPresent = favoriteSeries.find(
-    (favorite) => favorite.id === clicedSerieId
+    (favorite) => favorite.id === clickedSerieId
   );
 
   if (isPresent === undefined) {
     const allTheClickedSerieData = dataSeries.find(
-      (objSerie) => objSerie.id === clikcedSerieId
+      (objSerie) => objSerie.id === clickedSerieId
     );
 
     //el id de la serie donde la usuria ha hecho click no está en el array de favoritos, lo incluimos con push.
     favoriteSeries.push(allTheClickedSerieData);
   } else {
     favoriteSeries = favoriteSeries.filter(
-      (favorite) => favorite.id !== clikcedSerieId
+      (favorite) => favorite.id !== clickedSerieId
     );
     //esto va a generar un array nuevo que asigno a mi variable global
     //---->favoriteSeries (con esto machaco el anterior favorites)
@@ -47,16 +47,18 @@ function handleClickSeries(event) {
 function paintFavorites() {
   let favoritesHTML = '';
   for (let i = 0; i < favoriteSeries.length; i++) {
-    favoritesHTML += `<li class="favorite-item" id="${favoriteSeries[i].id}">`;
+    favoritesHTML += `<li class="favorite-item">`;
     favoritesHTML += `<h2 class="favorite-name">${favoriteSeries[i].name}</h2>`;
     if (favoriteSeries[i].image === null) {
       favoritesHTML += `<img class="favorite-image" src='https://via.placeholder.com/210x295/ffffff/666666/?text=TV';/>`;
     } else {
       favoritesHTML += `<img class="favorite-image" src="${favoriteSeries[i].image.medium}"/>`;
     }
+    favoritesHTML += `<span class="js-poster" data-id="${favoriteSeries[i].id}">X<span>`;
     favoritesHTML += '</li>';
   }
   ulListFavorites.innerHTML = favoritesHTML;
+  allListenersToSeries();
 }
 
 // Función escuchadora del evento click en una serie marcada como favorita.

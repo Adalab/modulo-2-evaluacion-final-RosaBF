@@ -45,13 +45,13 @@ function paintTvShow() {
 
     // Si al iniciar la página el elemento "presente" está indefinido, nos muestra la lista completa. Si no, nos muestra la de favoritos.
     if (isPresent === undefined) {
-      fullShowList += `<li data-id="${serie.id}" class= "js-poster"> <img src= "${image}">`;
-      fullShowList += `<img${serie.name}>`;
+      fullShowList += `<li data-id="${serie.id}" class= "js-poster">`;
     } else {
-      fullShowList += `<li data-id="${serie.id}" class= "js-poster favorite"> <img src= "${image}">`;
-      fullShowList += `<img${serie.name}>`;
-      fullShowList += '</li>';
+      fullShowList += `<li data-id="${serie.id}" class= "js-poster favorite">`;
     }
+    fullShowList += `<img src="${image}">`;
+    fullShowList += `<p>${serie.name}</p>`;
+    fullShowList += '</li>';
   });
 
   ulList.innerHTML = fullShowList;
