@@ -16,6 +16,7 @@ const setData = () => {
 };
 
 //Función LocalStorage para recuperar los datos de favoritas.
+//Esta vez convertimos savedFavorites en objeto con JSON.parse---->ya que al recuprear los datos necesitamos que se muestran de nuevo como una lista (objeto dentro de array)
 
 const getData = () => {
   const savedFavorites = localStorage.getItem('favorites');
