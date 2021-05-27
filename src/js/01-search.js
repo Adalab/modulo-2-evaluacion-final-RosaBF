@@ -51,9 +51,21 @@ function paintTvShow() {
     }
     fullShowList += `<img src="${image}">`;
     fullShowList += `<p>${serie.name}</p>`;
+    fullShowList += `<p>${serie.schedule.time}</P>`;
     fullShowList += '</li>';
   });
 
   ulList.innerHTML = fullShowList;
   allListenersToSeries();
+}
+
+const buttonLog = document.querySelector('.button2');
+
+buttonLog.addEventListener('click', handlerSeries);
+
+function handlerSeries() {
+  for (let i = 0; i < dataSeries.length; i++) {
+    const allLisSeries = dataSeries[i].name;
+    console.log(allLisSeries);
+  }
 }
