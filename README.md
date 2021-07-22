@@ -1,4 +1,4 @@
-![http://beta.adalab.es/modulo-2-evaluacion-final-RosaBF/
+http://beta.adalab.es/modulo-2-evaluacion-final-RosaBF/
 
 Proyecto de buscador de series "TV Shows finder" realizado con el Web Starter Kit.
 
